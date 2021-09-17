@@ -1,0 +1,16 @@
+how django load the templates
+
+------------------
+- user request teh url **http://127.0.0.1:8000/tasks***
+- django try to finds the '/tasks' route in **app/urls.py** (we need to create this file )
+- In **urls.py**, we will register our route like following
+**path('/tasks', views.tasks,name='tasks)**
+--Now the path will try to find **tasks function** in **app/views.py** file 
+- In **app/views.py** file, we will register tasks function as following 
+================
+def tasks(request):
+    data=ModelName.object.all()
+    return render(request, 'home.html',{'tasks':data})
+================
+- **render function** will look **home.html** template in **app/templates/home.html**
+- include app/urls.py in project/urls.py with inculde function
